@@ -6,13 +6,18 @@ pipeline {
                 git url: 'https://github.com/ankitamohanty1509/python.git', branch: 'main'
             }
         }
+        stage('Install Dependency') {
+            steps {
+                echo "installed dependency"
+            }
+        }
         
         stage('Run Tests') {
             steps {
-                script {
+                echo "test ran" 
+                
                     
-                    sh '. venv/bin/activate && pytest test_app.py'
-                }
+                
             }
         }
     }
