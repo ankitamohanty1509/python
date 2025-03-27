@@ -3,20 +3,24 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url:'https://github.com/ankitamohanty1509/python.git', branch:'main'  
+                git url: 'https://github.com/ankitamohanty1509/python.git', branch: 'main'
             }
         }
         stage('Install Dependencies') {
             steps {
                 script {
-                    sh 'pip install -r requirements.txt'
+                    
+                    sh 'python3 -m venv venv'
+
+                    sh '. venv/bin/activate && pip install -r requirements.txt'
                 }
             }
         }
         stage('Run Tests') {
             steps {
                 script {
-                    sh 'pytest test_app.py'
+                    
+                    sh '. venv/bin/activate && pytest test_app.py'
                 }
             }
         }
