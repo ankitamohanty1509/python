@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/ankitamohanty1509/python.git'  
+                git url:'https://github.com/ankitamohanty1509/python.git', branch:'main'  
             }
         }
         stage('Install Dependencies') {
